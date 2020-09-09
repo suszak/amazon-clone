@@ -1,5 +1,5 @@
 import React from "react";
-import "./Product.css";
+import "./Product.scss";
 
 function Product({ id, title, image, price, rating }) {
   return (
@@ -14,7 +14,9 @@ function Product({ id, title, image, price, rating }) {
           {Array(rating)
             .fill()
             .map((_, i) => (
-              <p>⭐</p>
+              <span role="img" aria-label="Star">
+                ⭐
+              </span>
             ))}
         </div>
       </div>
