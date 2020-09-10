@@ -8,11 +8,13 @@ const firebaseConfig = {
   storageBucket: "challange-2d234.appspot.com",
   messagingSenderId: "304483083348",
   appId: "1:304483083348:web:a154d2dc7de7091462f9c1",
+  measurementId: "G-K89JKVNK3R",
 };
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 const db = firebaseApp.firestore();
 const auth = firebase.auth();
+firebase.analytics();
 
 export { db, auth };

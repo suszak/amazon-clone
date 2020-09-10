@@ -2,12 +2,13 @@ import React from "react";
 import "./CheckoutProduct.scss";
 import { useStateValue } from "../../StateProvider";
 
-function CheckoutProduct({ id, image, title, price, rating }) {
-  const [{ basket }, dispatch] = useStateValue();
+function CheckoutProduct({ image, title, price, rating, basketId }) {
+  const [, dispatch] = useStateValue();
+
   const removeFromBasket = () => {
     dispatch({
       type: "REMOVE_FROM_BASKET",
-      id,
+      basketId,
     });
   };
 

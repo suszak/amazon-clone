@@ -7,6 +7,17 @@ function Product({ id, title, image, price, rating }) {
 
   const addToBasket = () => {
     //  dispatch the item into the data layer
+    const d = new Date(),
+      formatedDate = [
+        d.getMonth() + 1,
+        d.getDate(),
+        d.getFullYear(),
+        d.getHours(),
+        d.getMinutes(),
+        d.getSeconds(),
+        d.getMilliseconds(),
+      ].join("");
+
     dispatch({
       type: "ADD_TO_BASKET",
       item: {
@@ -15,6 +26,7 @@ function Product({ id, title, image, price, rating }) {
         image,
         price,
         rating,
+        basketId: formatedDate,
       },
     });
   };
