@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import "./Login.scss";
 import { Link, useHistory } from "react-router-dom";
-import { auth } from "../../firebase";
+import { auth } from "../../reducers/firebase";
 
 function Login() {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  //  sign in with firebase authentication
   const signIn = (e) => {
     e.preventDefault();
     auth
@@ -17,19 +18,21 @@ function Login() {
           history.push("/");
         }
       })
-      .catch((error) => alert(error.message));
+      .catch((error) => alert(error.message)); //  TODO: change alert to another notification (maybe react-notify)
   };
 
   const register = (e) => {
+    //  register new user in firebase
     e.preventDefault();
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((auth) => {
         if (auth) {
+          //  go to main page
           history.push("/");
         }
       })
-      .catch((error) => alert(error.message));
+      .catch((error) => alert(error.message)); //  TODO: change alert to another notification (maybe react-notify)
   };
 
   return (
@@ -42,7 +45,7 @@ function Login() {
         />
       </Link>
 
-      <div className="login__container">
+      <section className="login__container">
         <h1>Sign-in</h1>
 
         <form>
@@ -77,7 +80,7 @@ function Login() {
         <button className="login__registerButton" onClick={register}>
           Create your Amazon account
         </button>
-      </div>
+      </section>
     </div>
   );
 }

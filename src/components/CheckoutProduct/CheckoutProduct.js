@@ -1,6 +1,6 @@
 import React from "react";
 import "./CheckoutProduct.scss";
-import { useStateValue } from "../../StateProvider";
+import { useStateValue } from "../../reducers/StateProvider";
 
 function CheckoutProduct({ image, title, price, rating, basketId }) {
   const [, dispatch] = useStateValue();
@@ -16,7 +16,7 @@ function CheckoutProduct({ image, title, price, rating, basketId }) {
     <div className="checkoutProduct">
       <img className="checkoutProduct__image" src={image} alt="product" />
 
-      <div className="checkoutProduct__info">
+      <main className="checkoutProduct__info">
         <p className="checkoutProduct__title">{title}</p>
         <p className="checkoutProduct__price">
           <small>$</small>
@@ -32,7 +32,7 @@ function CheckoutProduct({ image, title, price, rating, basketId }) {
             ))}
         </div>
         <button onClick={removeFromBasket}>Remove from basket</button>
-      </div>
+      </main>
     </div>
   );
 }

@@ -52,6 +52,15 @@ export const products = [
       "https://images-na.ssl-images-amazon.com/images/I/71trhuzbhML._AC_SL1500_.jpg",
     rating: 4,
   },
+  {
+    id: "7",
+    title:
+      "HP VH240a 23.8-inch Full HD 1080p IPS LED Monitor with Built-in Speakers and VESA Mounting, Rotating Portrait & Landscape, Tilt, and HDMI & VGA Ports (1KL30AA) - Black",
+    price: 165.75,
+    image:
+      "https://images-na.ssl-images-amazon.com/images/I/71trhuzbhML._AC_SL1500_.jpg",
+    rating: 4,
+  },
 ];
 
 export const homeImage =

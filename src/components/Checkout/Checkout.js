@@ -1,8 +1,8 @@
 import React from "react";
 import "./Checkout.scss";
 import Subtotal from "../Subtotal/Subtotal";
-import { checkoutAd } from "../../data";
-import { useStateValue } from "../../StateProvider";
+import { checkoutAd } from "../../reducers/data";
+import { useStateValue } from "../../reducers/StateProvider";
 import CheckoutProduct from "../CheckoutProduct/CheckoutProduct";
 
 function Checkout() {
@@ -10,10 +10,10 @@ function Checkout() {
 
   return (
     <div className="checkout">
-      <div className="checkout__left">
+      <section className="checkout__left">
         <img className="checkout__ad" src={checkoutAd} alt="checkout ad" />
 
-        <div>
+        <main>
           <h3>{user ? "Hello, " + user?.email : "Hello, Guest"}</h3>
           <h2 className="checkout__title">Your shopping Basket</h2>
 
@@ -28,12 +28,12 @@ function Checkout() {
               key={element.basketId}
             />
           ))}
-        </div>
-      </div>
+        </main>
+      </section>
 
-      <div className="checkout__right">
+      <section className="checkout__right">
         <Subtotal />
-      </div>
+      </section>
     </div>
   );
 }

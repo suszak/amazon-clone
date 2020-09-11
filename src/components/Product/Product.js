@@ -1,21 +1,22 @@
 import React from "react";
 import "./Product.scss";
-import { useStateValue } from "../../StateProvider";
+import { useStateValue } from "../../reducers/StateProvider";
 
 function Product({ id, title, image, price, rating }) {
   const [, dispatch] = useStateValue();
 
   const addToBasket = () => {
     //  dispatch the item into the data layer
-    const d = new Date(),
+    //  create unique key for each basketItem
+    const date = new Date(),
       formatedDate = [
-        d.getMonth() + 1,
-        d.getDate(),
-        d.getFullYear(),
-        d.getHours(),
-        d.getMinutes(),
-        d.getSeconds(),
-        d.getMilliseconds(),
+        date.getMonth() + 1,
+        date.getDate(),
+        date.getFullYear(),
+        date.getHours(),
+        date.getMinutes(),
+        date.getSeconds(),
+        date.getMilliseconds(),
       ].join("");
 
     dispatch({
@@ -33,7 +34,7 @@ function Product({ id, title, image, price, rating }) {
 
   return (
     <div className="product">
-      <div className="product__info">
+      <main className="product__info">
         <p>{title}</p>
         <p className="product__price">
           <small>$</small>
@@ -48,7 +49,7 @@ function Product({ id, title, image, price, rating }) {
               </span>
             ))}
         </div>
-      </div>
+      </main>
 
       <img src={image} alt="product" />
 
