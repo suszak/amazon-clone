@@ -9,15 +9,27 @@
   &__products {
     display: grid;
     z-index: 1;
-    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-    grid-gap: 25px 25px;
-  }
-
-  &__image {
-    width: 100%;
-    z-index: -1;
-    margin-bottom: -350px;
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    grid-gap: 25px;
+    padding: 0 25px;
+    margin-bottom: 25px;
+    margin-top: 300px;
   }
 }
 
+//  Carousel modify:
+.control-dots {
+  top: 250px;
+}
 
+.carousel-root {
+  width: 1500px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
+.slider {
+  overflow: visible;
+}
