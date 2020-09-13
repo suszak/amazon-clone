@@ -1,0 +1,12 @@
+.notification-container-center {
+  height: auto;
+}
+
+.react-notification-root {
+  overflow: hidden;
+}
+
+.notification-parent {
+  height: 150px;
+  overflow: hidden;
+}

@@ -4,6 +4,16 @@
   background-color: white;
   height: max-content;
 
+  &__left {
+    width: calc(100% - 320px);
+  }
+
+  &__right {
+    width: 320px;
+    display: flex;
+    justify-content: center;
+  }
+
   &__ad {
     width: 100%;
     margin-bottom: 10px;

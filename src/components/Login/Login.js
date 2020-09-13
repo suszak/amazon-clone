@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import "./Login.scss";
 import { Link, useHistory } from "react-router-dom";
 import { auth } from "../../reducers/firebase";
+import { store } from "react-notifications-component";
+import "./Login.scss";
 
 function Login() {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  //  sign in with firebase authentication
   const signIn = (e) => {
+    //  sign in with firebase authentication
     e.preventDefault();
     auth
       .signInWithEmailAndPassword(email, password)
@@ -18,7 +19,21 @@ function Login() {
           history.push("/");
         }
       })
-      .catch((error) => alert(error.message)); //  TODO: change alert to another notification (maybe react-notify)
+      .catch((error) => {
+        store.addNotification({
+          title: "Something wents wrong!",
+          message: error.message,
+          type: "danger",
+          insert: "top",
+          container: "top-right",
+          animationIn: ["animate__animated", "animate__fadeIn"],
+          animationOut: ["animate__animated", "animate__fadeOut"],
+          dismiss: {
+            duration: 5000,
+            onScreen: true,
+          },
+        });
+      });
   };
 
   const register = (e) => {
@@ -32,7 +47,21 @@ function Login() {
           history.push("/");
         }
       })
-      .catch((error) => alert(error.message)); //  TODO: change alert to another notification (maybe react-notify)
+      .catch((error) => {
+        store.addNotification({
+          title: "Something wents wrong!",
+          message: error.message,
+          type: "danger",
+          insert: "top",
+          container: "top-right",
+          animationIn: ["animate__animated", "animate__fadeIn"],
+          animationOut: ["animate__animated", "animate__fadeOut"],
+          dismiss: {
+            duration: 5000,
+            onScreen: true,
+          },
+        });
+      });
   };
 
   return (

@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "./App.css";
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import Checkout from "./components/Checkout/Checkout";
@@ -7,6 +6,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./components/Login/Login";
 import { auth } from "./reducers/firebase";
 import { useStateValue } from "./reducers/StateProvider";
+import ReactNotification from "react-notifications-component";
+// import "./cos.css"
+import "react-notifications-component/dist/theme.css";
+import "animate.css/animate.compat.css";
+import "./App.css";
 
 function App() {
   const [, dispatch] = useStateValue();
@@ -34,6 +38,7 @@ function App() {
 
   return (
     <Router>
+      <ReactNotification />
       <div className="app">
         <Switch>
           <Route path="/login">

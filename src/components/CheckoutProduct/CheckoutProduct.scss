@@ -1,7 +1,8 @@
 .checkoutProduct {
-  display: flex;
+  display: grid;
   margin-top: 20px;
   margin-bottom: 20px;
+  grid-template-columns: 200px 1fr;
 
   &__info {
     padding-left: 20px;
@@ -22,11 +23,11 @@
   }
 
   &__rating {
-      display: flex;
+    display: flex;
   }
 
   &__title {
-      font-size: 17px;
-      font-weight: 800;
+    font-size: 17px;
+    font-weight: 800;
   }
 }

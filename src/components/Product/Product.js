@@ -1,11 +1,12 @@
 import React from "react";
 import "./Product.scss";
 import { useStateValue } from "../../reducers/StateProvider";
+import { store } from "react-notifications-component";
 
 function Product({ id, title, image, price, rating }) {
   const [, dispatch] = useStateValue();
 
-  const addToBasket = () => {
+  const addToBasket = (store) => {
     //  dispatch the item into the data layer
     //  create unique key for each basketItem
     const date = new Date(),
@@ -28,6 +29,20 @@ function Product({ id, title, image, price, rating }) {
         price,
         rating,
         basketId: formatedDate,
+      },
+    });
+
+    store.addNotification({
+      title: "Added to basket!",
+      message: title + " added to basket",
+      type: "info",
+      insert: "top",
+      container: "top-right",
+      animationIn: ["animate__animated", "animate__fadeIn"],
+      animationOut: ["animate__animated", "animate__fadeOut"],
+      dismiss: {
+        duration: 5000,
+        onScreen: true,
       },
     });
   };
@@ -53,7 +68,7 @@ function Product({ id, title, image, price, rating }) {
 
       <img src={image} alt="product" />
 
-      <button onClick={addToBasket}>Add to Basket</button>
+      <button onClick={() => addToBasket(store)}>Add to Basket</button>
     </div>
   );
 }
