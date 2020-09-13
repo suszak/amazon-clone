@@ -1,5 +1,5 @@
 # Amazon clone
-live version: [suszak.github.io/todolist](http://suszak.github.io/todolist/)
+live version: [challange-2d234.web.app/](https://challange-2d234.web.app/)
 ## Table of contents
 * [General info](#general-info)
 * [Technologies](#technologies)
@@ -12,6 +12,7 @@ We can add some products from main site, then we can see summary in basket site.
 Site is not fully done yet:
 * missing orders site
 * searching field not working
+* mobile design in progress
 
 ## Technologies
 Project is created with:
