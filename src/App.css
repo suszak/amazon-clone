@@ -10,3 +10,7 @@
   height: 150px;
   overflow: hidden;
 }
+
+.notification-container-top-right {
+  top: 70px;
+}
