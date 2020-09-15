@@ -1,5 +1,5 @@
 # Amazon clone
-live version: [challange-2d234.web.app/](https://challange-2d234.web.app/)
+live version: [suszak-amazon-clone.netlify.app/](https://suszak-amazon-clone.netlify.app/)
 ## Table of contents
 * [General info](#general-info)
 * [Technologies](#technologies)
