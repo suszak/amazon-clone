@@ -22,3 +22,4 @@ Project is created with:
 * React.js (with routing)
 * Context API
 * Firebase authentication
+* Stripe.js

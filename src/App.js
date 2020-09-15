@@ -4,6 +4,7 @@ import Checkout from "./components/Checkout/Checkout";
 import Payment from "./components/Payment/Payment";
 import Login from "./components/Login/Login";
 import { auth } from "./reducers/firebase";
+import { publicKey } from "./keys";
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useStateValue } from "./reducers/StateProvider";
@@ -15,9 +16,7 @@ import "react-notifications-component/dist/theme.css";
 import "animate.css/animate.compat.css";
 import "./App.css";
 
-const promise = loadStripe(
-  "pk_test_51HPvWUBWp0Xa9Rw0Enei4wxeJTXTZlzV3k4SuEOj0prhct11RzgBqyM3sLRCKXs7CvPYOLyoJCOfya0Ar0FnYu8P00TObQRnX2"
-);
+const promise = loadStripe(publicKey);
 
 function App() {
   const [, dispatch] = useStateValue();

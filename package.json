@@ -12,6 +12,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "animate.css": "^4.1.1",
+    "axios": "^0.20.0",
     "firebase": "^7.19.1",
     "material-ui": "^0.20.2",
     "node-sass": "^4.14.1",

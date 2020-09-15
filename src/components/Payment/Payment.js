@@ -1,14 +1,16 @@
 import { useStateValue } from "../../reducers/StateProvider";
 import CheckoutProduct from "../CheckoutProduct/CheckoutProduct";
 import { getBasketTotal } from "../../reducers/reducer";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import axios from "../../reducers/axios";
+import React, { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import CurrencyFormat from "react-currency-format";
 import "./Payment.scss";
 
 function Payment() {
-  const [{ basket, user }] = useStateValue();
+  const [{ basket, user }, dispatch] = useStateValue();
+  const history = useHistory();
 
   const stripe = useStripe();
   const elements = useElements();
@@ -17,8 +19,47 @@ function Payment() {
   const [processing, setProcessing] = useState("");
   const [error, setError] = useState(null);
   const [disabled, setDisabled] = useState(true);
+  const [clientSecret, setClientSecret] = useState(true);
 
-  const handleSubmit = (event) => {};
+  useEffect(() => {
+    const getClientSecret = async () => {
+      //  on every basket change it will update total amount to charge the client
+      const response = await axios({
+        method: "post",
+        //  Total must be in subunits, like cents etc in Stripe.js
+        url: `/payments/create?total=${Math.round(
+          getBasketTotal(basket) * 100
+        )}`,
+      });
+      setClientSecret(response.data.clientSecret);
+    };
+
+    getClientSecret();
+  }, [basket]);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setProcessing(true);
+
+    const payload = await stripe
+      .confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: elements.getElement(CardElement),
+        },
+      })
+      .then(({ paymentIntent }) => {
+        // paymentIntent is a payment confirmation
+        setSucceeded(true);
+        setError(null);
+        setProcessing(false);
+
+        dispatch({
+          type: "EMPTY_BASKET",
+        });
+
+        history.replace("/"); //  /oreders in future
+      });
+  };
 
   const handleChange = (event) => {
     setDisabled(event.empty);
