@@ -15,11 +15,6 @@ We can add some products from main site, then we can see summary in basket site.
 If You want to test proceed site just use 4242424242424... as card number. Antoher shouldn't work properly.
 It is only front-end site so your card data won't be save and it's safe, but don't use it.
 
-Site is not fully done yet:
-
-- searching field not working
-- mobile design in progress
-
 ## Technologies
 
 Project is created with:
