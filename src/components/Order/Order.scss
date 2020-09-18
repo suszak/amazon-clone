@@ -1,0 +1,43 @@
+.order {
+  margin-top: 25px;
+  width: 80%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+
+  &__info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    text-align: center;
+    align-items: center;
+  }
+
+  .MuiSvgIcon-root {
+    justify-self: center;
+    cursor: pointer;
+    font-size: 2rem;
+  }
+
+  &__basket {
+    width: 100%;
+    position: relative;
+    padding: 20px;
+
+    button {
+      display: none;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 95%;
+      border-top: 2px solid black;
+    }
+  }
+}

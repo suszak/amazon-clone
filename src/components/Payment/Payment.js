@@ -1,10 +1,9 @@
 import { useStateValue } from "../../reducers/StateProvider";
 import CheckoutProduct from "../CheckoutProduct/CheckoutProduct";
 import { getBasketTotal } from "../../reducers/reducer";
-import axios from "../../reducers/axios";
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import { CardElement } from "@stripe/react-stripe-js";
 import CurrencyFormat from "react-currency-format";
 import "./Payment.scss";
 
@@ -12,57 +11,50 @@ function Payment() {
   const [{ basket, user }, dispatch] = useStateValue();
   const history = useHistory();
 
-  const stripe = useStripe();
-  const elements = useElements();
-
   const [succeeded, setSucceeded] = useState(false);
   const [processing, setProcessing] = useState("");
   const [error, setError] = useState(null);
   const [disabled, setDisabled] = useState(true);
-  const [clientSecret, setClientSecret] = useState(true);
+  const [orderDate, setOrderDate] = useState(null);
 
   useEffect(() => {
-    const getClientSecret = async () => {
-      //  on every basket change it will update total amount to charge the client
-      const response = await axios({
-        method: "post",
-        //  Total must be in subunits, like cents etc in Stripe.js
-        url: `/payments/create?total=${Math.round(
-          getBasketTotal(basket) * 100
-        )}`,
-      });
-      setClientSecret(response.data.clientSecret);
+    //  Create date to basket order
+    const options = {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
     };
-
-    getClientSecret();
+    const date = new Date();
+    setOrderDate(date.toLocaleDateString("en-US", options));
   }, [basket]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setProcessing(true);
+    const cost = getBasketTotal(basket);
 
-    const payload = await stripe
-      .confirmCardPayment(clientSecret, {
-        payment_method: {
-          card: elements.getElement(CardElement),
-        },
-      })
-      .then(({ paymentIntent }) => {
-        // paymentIntent is a payment confirmation
-        setSucceeded(true);
-        setError(null);
-        setProcessing(false);
+    dispatch({
+      type: "ADD_ORDER",
+      order: {
+        date: orderDate,
+        cost: cost,
+        basket,
+      },
+    });
 
-        dispatch({
-          type: "EMPTY_BASKET",
-        });
+    setSucceeded(true);
+    setError(null);
+    setProcessing(false);
+    setOrderDate(null);
 
-        history.replace("/"); //  /oreders in future
-      });
+    history.replace("/orders");
   };
 
   const handleChange = (event) => {
-    setDisabled(event.empty);
+    setDisabled(event.error);
     setError(event.error ? event.error.message : "");
   };
 

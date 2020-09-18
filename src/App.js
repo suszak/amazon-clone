@@ -3,6 +3,7 @@ import Home from "./components/Home/Home";
 import Checkout from "./components/Checkout/Checkout";
 import Payment from "./components/Payment/Payment";
 import Login from "./components/Login/Login";
+import Orders from "./components/Orders/Orders";
 import { auth } from "./reducers/firebase";
 import { publicKey } from "./keys";
 import React, { useEffect } from "react";
@@ -61,6 +62,11 @@ function App() {
           <Route path="/checkout">
             <Header />
             <Checkout />
+          </Route>
+
+          <Route path="/orders">
+            <Header />
+            <Orders />
           </Route>
 
           <Route path="/">
