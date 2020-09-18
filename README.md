@@ -10,9 +10,13 @@ live version: [suszak-amazon-clone.netlify.app/](https://suszak-amazon-clone.net
 ## General info
 
 It is clone of the website known as Amazon.
+
 It is possible to create our account and then log in to it.
+
 We can add some products from main site, then we can see summary in basket site.
+
 If You want to test proceed site just use 4242424242424... as card number. Antoher shouldn't work properly.
+
 It is only front-end site so your card data won't be save and it's safe, but don't use it.
 
 ## Technologies
