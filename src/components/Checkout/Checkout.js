@@ -15,9 +15,9 @@ function Checkout() {
 
         <main>
           <h3>{user ? "Hello, " + user?.email : "Hello, Guest"}</h3>
-          <h2 className="checkout__title">Your shopping Basket</h2>
+          {basket.length < 1?<h2 className="checkout__title">Your shopping Basket is empty</h2>:<h2 className="checkout__title">Your shopping Basket</h2>}
 
-          {basket.map((element) => (
+          {basket?.map((element) => (
             <CheckoutProduct
               id={element.id}
               image={element.image}
