@@ -8,14 +8,18 @@ function Orders() {
 
   return (
     <div className="orders">
-      {orders.map((order, index) => (
-        <Order
-          date={order.date}
-          basket={order.basket}
-          cost={order.cost}
-          key={index}
-        />
-      ))}
+      {orders.length < 1 ? (
+        <h1>You didn't buy anything yet.</h1>
+      ) : (
+        orders.map((order, index) => (
+          <Order
+            date={order.date}
+            basket={order.basket}
+            cost={order.cost}
+            key={index}
+          />
+        ))
+      )}
     </div>
   );
 }

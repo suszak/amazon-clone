@@ -9,6 +9,10 @@
   border: 1px solid #dddddd;
   border-radius: 3px;
 
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+  }
+
   &__gift {
     display: flex;
     align-items: center;

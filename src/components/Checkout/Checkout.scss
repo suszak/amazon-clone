@@ -4,19 +4,38 @@
   background-color: white;
   height: max-content;
 
+  @media screen and (max-width: 1000px) {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+
   &__left {
     width: calc(100% - 320px);
+
+    @media screen and (max-width: 1000px) {
+      width: 90%;
+    }
   }
 
   &__right {
     width: 320px;
     display: flex;
     justify-content: center;
+
+    @media screen and (max-width: 1000px) {
+      width: 90%;
+      margin-bottom: 15px;
+    }
   }
 
   &__ad {
     width: 100%;
     margin-bottom: 10px;
+
+    @media screen and (max-width: 1000px) {
+      display: none;
+    }
   }
 
   &__title {

@@ -14,6 +14,12 @@
     padding: 0 25px;
     margin-bottom: 25px;
     margin-top: 300px;
+
+    @media screen and (max-width: 500px) {
+      display: flex;
+      flex-direction: column;
+      margin-top: 150px;
+    }
   }
 }
 
@@ -28,6 +34,10 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: -1;
+
+  @media screen and (max-width: 500px) {
+    width: 500px;
+  }
 }
 
 .slider {
